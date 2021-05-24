@@ -16,17 +16,15 @@ class App extends Component {
             {id: 3, name: "Task 3", desc: "this is my task three"},  
         ]
     }
-}
+  }
 
 
   addItem = (item) => {
     item.id = this.state.items.length + 1;
     let items = this.state.items;
-    items.push(item);    
-    this.setState({items});
+    items.push(item);        
+    this.setState({items});    
   }
-
-  
 
   render() {
   return (

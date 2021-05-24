@@ -17,8 +17,12 @@ class TodoContainer extends Component {
     }
 
     handelSubmit = (e) => {
-        this.setState({id: "", name: "", desc: ""});
-        this.props.addItem(this.state);
+        const inN = document.getElementById("name"),
+            inD = document.getElementById("desc");
+        if(inN.value.length >= 3 && inD.value.length >= 5){
+            this.setState({id: "", name: "", desc: ""});
+            this.props.addItem(this.state);
+        } else{ console.log("Attention msg"); }
     }
 
    render() {              
@@ -28,11 +32,11 @@ class TodoContainer extends Component {
               <section id="TodoInsert">
                 <div>
                     <p>Name</p>
-                    <input type="text" id="inName" id="name" onChange={this.handleChange} value={this.state.name}/>
+                    <input type="text" id="name" onChange={this.handleChange} value={this.state.name}/>
                 </div>
                 <div>
                     <p>Description</p>
-                    <input type="text" id="inDesc" id="desc" onChange={this.handleChange} value={this.state.desc}/>
+                    <input type="text" id="desc" onChange={this.handleChange} value={this.state.desc}/>
                 </div>         
                 <button type="button" onClick={this.handelSubmit}>Add Todo</button>    
               </section>
