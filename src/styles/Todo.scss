@@ -1,0 +1,71 @@
+.App{
+    background-color: #4a536b;
+    margin: 2.5rem;
+    overflow: auto;
+    border-radius: 1rem;
+    h1{ color: #ff9a8d; text-align: center;}
+    #TodoInsert{
+        overflow: auto;     
+        padding: 1rem;
+        margin: 0rem 3.5rem 0.5rem;
+        background-color: #aed6dc;
+        border-radius: 0.5rem;
+        div{
+            float: left;
+            display: inline-block;
+            &:first-of-type{ margin-right: 0.5rem; }
+            p{ margin: 0.4rem 0rem; color: #4a536b;}
+            input{ border: none; padding: 0.2rem;
+                &:focus {
+                    box-shadow: none;
+                    outline: none;
+                }
+            }
+        }
+        button{ float: right;  margin: 1.7rem 0rem;  color: #ff9a8d; font-weight: 900; background-color: transparent;  border: none;}
+    }
+    .TodoItems{
+        overflow: auto;
+        padding: 0.4rem 1rem;     
+        margin: 0rem 4.0rem 0.8rem;
+        background-color: #aed6dc;
+        border-radius: 0.5rem;        
+        div{
+            float: left;
+            display: inline-block;
+            h1{ text-align: left; margin: 0.5rem 0rem;}
+            p{ margin: 0.25rem 0rem; }
+        }
+        button{
+            float: right;  
+            margin: 2.7rem 0.5rem;
+            font-size: medium;
+            background-color: transparent;
+            border: none;
+            position: relative;
+            padding: 0.8rem;
+            &::before{
+                font-family: 'Font Awesome 5 Free';
+                font-weight: 900;
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                font-style: normal;
+                font-feature-settings: normal;
+                font-variant: normal;
+                text-rendering: auto;
+                line-height: 1;
+                position: absolute;
+                top: 0.3rem;
+                left: 0.38rem;
+            }            
+            &.dlt{
+                color: red;
+                &::before{ content: "\f00d"; }
+            }
+            &.comp{
+                color: green;
+                &::before{ content: "\f00c"; }
+            }
+        }        
+    }
+}
