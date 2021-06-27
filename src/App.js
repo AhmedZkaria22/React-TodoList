@@ -1,39 +1,39 @@
-// import logo from './logo.svg';
-// import './App.css';
-import { Component } from 'react';
-import TodoContainer from './components/TodoContainer';
+import React, { useState } from 'react'
+import TodoHeader from './components/TodoHeader';
 import TodoItem from './components/TodoItem';
 import './styles/Todo.css';
 
-class App extends Component {
-  constructor(props) {
-    super(props)
+function App() {
 
-    this.state = {
-        items: [
-            {id: 1, name: "Task 1", desc: "this is my task one"},
-            {id: 2, name: "Task 2", desc: "this is my task two"},
-            {id: 3, name: "Task 3", desc: "this is my task three"},  
-        ]
-    }
+  const lclgItems = [];
+  
+  for(var i=1; i<=100; i++){
+  
+    if( ! localStorage.getItem(`Item${i} name`) || ! localStorage.getItem(`Item${i} desc`) ) { continue; 
+    } else { lclgItems.push({ name: localStorage.getItem(`Item${i} name`), desc: localStorage.getItem(`Item${i} desc`) }) }    
+    
+  }
+  const lclgItemsFull = lclgItems.filter( function (lclgItem)  {return lclgItem.name != null} );
+  
+  for(var i=0; i<localStorage.length; i++){
+    console.log( localStorage.getItem( localStorage.key(i) ) );
+  }
+
+  const [Items, setItems] = useState([    
+    ...lclgItemsFull,
+  ]);
+
+  const  addItem = (item) => {
+    setItems([ ...Items, item ]);
   }
 
 
-  addItem = (item) => {
-    item.id = this.state.items.length + 1;
-    let items = this.state.items;
-    items.push(item);        
-    this.setState({items});    
-  }
-
-  render() {
   return (
     <div className="App">
-      <TodoContainer addItem={this.addItem}/>
-      <TodoItem items={this.state.items}/>
+      <TodoHeader items={Items} addItem={addItem} />
+      <TodoItem items={Items} />
     </div>
-  );
-  }
+  )
 }
 
-export default App;
+export default App
